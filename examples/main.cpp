@@ -1,3 +1,3 @@
 #include <dcc_ein/dcc_ein.hpp>
 
-int main(int argc, char* argv[]) {}
+int main() {}

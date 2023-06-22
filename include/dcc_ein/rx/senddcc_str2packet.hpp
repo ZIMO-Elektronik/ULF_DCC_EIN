@@ -23,6 +23,7 @@ namespace dcc_ein::rx {
 /// String should have the pattern 'senddcc( [0-9a-fA-F]{2}){3,}\r'. If the
 /// string contains multiple packets only the first one is returned.
 ///
+/// \param  str senddcc string
 /// \return dcc::Packet for valid strings
 /// \return std::nullopt for invalid strings
 constexpr std::optional<dcc::Packet> senddcc_str2packet(std::string_view str) {

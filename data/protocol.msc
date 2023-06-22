@@ -1,0 +1,6 @@
+# MSC for some fictional process
+msc {
+  Transmitter, Receiver;
+
+  Transmitter->Receiver [label="senddcc 03 3f aa 96\r"];
+}

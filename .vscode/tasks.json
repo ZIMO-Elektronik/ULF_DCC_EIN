@@ -24,6 +24,12 @@
       "type": "shell",
       "isBackground": true,
       "command": "./build/tests/DCC_EINTests"
+    },
+    {
+      "label": "Run mscgen",
+      "type": "shell",
+      "isBackground": true,
+      "command": "mscgen -Tpng -i ./data/protocol.msc -o ./data/images/protocol.png"
     }
   ]
 }
