@@ -13,17 +13,10 @@ project(
   VERSION ${VERSION_FROM_GIT}
   LANGUAGES CXX)
 
-set(DCC_EIN_RX_MIN_STR_LEN
-    17uz
-    CACHE STRING "Minimum string length of 'senddcc' string")
-
 add_library(DCC_EIN INTERFACE ${SRC})
 add_library(DCC_EIN::DCC_EIN ALIAS DCC_EIN)
 
 target_compile_features(DCC_EIN INTERFACE cxx_std_23)
-
-target_compile_definitions(
-  DCC_EIN INTERFACE DCC_EIN_RX_MIN_STR_LEN=${DCC_EIN_RX_MIN_STR_LEN})
 
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
   target_include_directories(DCC_EIN INTERFACE include)

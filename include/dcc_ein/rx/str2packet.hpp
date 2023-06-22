@@ -20,15 +20,14 @@ namespace dcc_ein::rx {
 
 /// Convert senddcc string to packet
 ///
-/// String should have the pattern 'senddcc( [0-9a-fA-F]+){3,}\r'. If the string
-/// contains multiple packets only the first one is returned.
+/// String should have the pattern 'senddcc( [0-9a-fA-F]{2}){3,}\r'. If the
+/// string contains multiple packets only the first one is returned.
 ///
 /// \return dcc::Packet for valid strings
 /// \return std::nullopt for invalid strings
 constexpr std::optional<dcc::Packet> str2packet(std::string_view str) {
   // String must be of certain length and starting with "senddcc "
-  if (size(str) < DCC_EIN_RX_MIN_STR_LEN || !str.starts_with(senddcc))
-    return std::nullopt;
+  if (size(str) < 17uz || !str.starts_with(senddcc)) return std::nullopt;
 
   // Find \r
   auto const last{std::ranges::find(str, '\r')};
