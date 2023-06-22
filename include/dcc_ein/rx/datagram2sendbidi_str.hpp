@@ -2,9 +2,9 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-/// Datagram to sendbidi string
+/// Convert datagram to sendbidi string
 ///
-/// \file   dcc_ein/rx/datagram2str.hpp
+/// \file   dcc_ein/rx/datagram2sendbidi_str.hpp
 /// \author Vincent Hamp
 /// \date   22/06/2023
 
@@ -19,6 +19,8 @@
 
 namespace dcc_ein::rx {
 
+using namespace std::literals;
+
 /// Convert datagram to sendbidi string
 ///
 /// The returned string will have the pattern
@@ -28,15 +30,20 @@ namespace dcc_ein::rx {
 /// \param  datagram  Datagram
 /// \return sendbidi string for valid datagrams
 /// \return std::nullopt for invalid datagrams
-constexpr std::optional<SendBiDiStr>
-datagram2str(dcc::Address addr, std::span<uint8_t const> datagram) {
+constexpr std::optional<std::array<char,
+                                   size(sendbidi) + size("s0000 "sv) +
+                                     size("00 00 00 00 00 00 00 00\r"sv)>>
+datagram2sendbidi_str(dcc::Address addr, std::span<uint8_t const> datagram) {
   // Datagram can't be smaller than channel1 or bundled size
   if (size(datagram) < dcc::bidi::channel1_size ||
       size(datagram) > dcc::bidi::bundled_channels_size)
     return std::nullopt;
 
   // Copy prefix
-  SendBiDiStr str{};
+  std::array<char,
+             size(sendbidi) + size("s0000 "sv) +
+               size("00 00 00 00 00 00 00 00\r"sv)>
+    str{};
   auto first{std::copy(cbegin(sendbidi), cend(sendbidi), data(str))};
 
   // Add address type identifier

@@ -10,5 +10,6 @@
 
 #pragma once
 
-#include "rx/datagram2str.hpp"
-#include "rx/str2packet.hpp"
+#include "rx/ack2senddcc_str.hpp"
+#include "rx/datagram2sendbidi_str.hpp"
+#include "rx/senddcc_str2packet.hpp"

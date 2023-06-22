@@ -14,12 +14,6 @@
 
 namespace dcc_ein {
 
-using namespace std::literals;
-
 inline constexpr std::string_view sendbidi{"sendbidi "};
-
-using SendBiDiStr = std::array<char,
-                               size(sendbidi) + size("s0000 "sv) +
-                                 size("00 00 00 00 00 00 00 00\r"sv)>;
 
 }  // namespace dcc_ein
