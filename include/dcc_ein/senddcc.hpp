@@ -14,6 +14,6 @@
 
 namespace dcc_ein {
 
-inline constexpr std::string_view senddcc{"senddcc "};
+inline constexpr std::string_view senddcc_prefix{"senddcc "};
 
 }  // namespace dcc_ein
