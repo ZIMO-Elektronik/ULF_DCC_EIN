@@ -12,6 +12,10 @@ DCC_EIN is a serial ASCII protocol used by the [ZIMO Sound Programmer](http://ww
   <summary>Table of contents</summary>
   <ol>
     <li><a href="#protocol">Protocol</a></li>
+      <ul>
+        <li><a href="#senddcc">senddcc</a></li>
+        <li><a href="#sendbidi">sendbidi</a></li>
+      </ul>
     <li><a href="#getting-started">Getting started</a></li>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
@@ -23,7 +27,33 @@ DCC_EIN is a serial ASCII protocol used by the [ZIMO Sound Programmer](http://ww
 </details>
 
 ## Protocol
-![Yolo](data/images/protocol.png)
+The protocol consists of only two commands, both of which send raw data encoded as hex ASCII. A `senddcc` command to send DCC and a `sendbidi` command to receive BiDi feedback. Both command strings are terminated with a carriage return.
+
+![](data/images/protocol.png)
+
+### senddcc
+The string of the `senddcc` command follows the pattern `senddcc( [0-9a-fA-F]{2}){3,}\r`. The hex ASCII coded bytes contained in the string correspond to the data bytes of the DCC command including the checksum.
+
+The command can optionally be answered with a string of the pattern `senddcc [a-fA-F]([0-9a-fA-F]{2})\r`. The response contains an identifier and a hex ASCII encoded data byte whose meaning depends on the identifier.
+| Response byte preceding character | Response byte type                                      |
+| --------------------------------- | ------------------------------------------------------- |
+| b                                 | Response byte indicates current buffer level in bytes   |
+| p                                 | response byte indicates current buffer level in packets |
+
+### sendbidi
+The string of the `sendbidi` command follows the pattern `sendbidi [ubsalrtei][0-9a-fA-F]{4}( [0-9a-fA-F]{2}){8}\r`. In addition to the hex ASCII coded datagram, the command also contains the address belonging to the datagram. Since DCC addresses are not unique, an associated identifier that determines the address type must also be included.
+
+| Address preceding character | DCC address type   |
+| --------------------------- | ------------------ |
+| u                           | Unknown or service |
+| b                           | Broadcast          |
+| s                           | Short              |
+| a                           | Accessory          |
+| l                           | Long               |
+| r                           | Reserved           |
+| t                           | Tip-off-search     |
+| e                           | Extended packet    |
+| i                           | Idle or system     |
 
 ## Getting started
 ### Prerequisites
@@ -47,7 +77,7 @@ target_link_libraries(YourTarget INTERFACE DCC_EIN::DCC_EIN)
 ```
 
 ### Build
-If the library is built locally then the tests and small example will be generated.
+If the build is running as a top-level CMake project then tests and a small example will be generated.
 ```sh
 cmake -Bbuild
 cmake --build build --target DCC_EINExamples

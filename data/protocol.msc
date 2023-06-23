@@ -1,6 +1,14 @@
 # MSC for some fictional process
 msc {
+  hscale = "1.5";
+
   Transmitter, Receiver;
 
   Transmitter->Receiver [label="senddcc 03 3f aa 96\r"];
+  Transmitter<-Receiver [label="senddcc b06\r"];
+  ||| [label="Transmitter sends command\nReceiver acknowledges with number of bytes in it's FIFO"];
+  ...;
+  ...;
+  Transmitter<-Receiver [label="sendbidi s0003 a3 ac 55 b1 d2 5a ac 9a\r"];
+  ||| [label="Receiver sends BiDi datagram"];
 }
