@@ -15,7 +15,7 @@
 namespace dcc_ein::tx {
 
 ///
-constexpr auto packet2senddcc_str(dcc::Packet const& packet) {
+inline auto packet2senddcc_str(dcc::Packet const& packet) {
   return raw2senddcc_str({cbegin(packet.data), packet.size});
 }
 

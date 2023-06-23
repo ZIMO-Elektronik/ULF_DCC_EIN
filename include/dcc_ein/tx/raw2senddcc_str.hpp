@@ -18,7 +18,7 @@
 namespace dcc_ein::tx {
 
 ///
-constexpr void raw2senddcc_str(std::span<uint8_t const> chunk) {
+inline void raw2senddcc_str(std::span<uint8_t const> chunk) {
   // rettype?
 }
 

@@ -18,7 +18,7 @@
 namespace dcc_ein::tx {
 
 ///
-constexpr std::optional<std::array<uint8_t, 8uz>>
+inline std::optional<std::array<uint8_t, 8uz>>
 sendbidi_str2datagram(std::span<uint8_t const> chunk) {
   // rettype?
   return {};

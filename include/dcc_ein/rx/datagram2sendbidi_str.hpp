@@ -30,9 +30,9 @@ using namespace std::literals;
 /// \param  datagram  Datagram
 /// \return sendbidi string for valid datagrams
 /// \return std::nullopt for invalid datagrams
-constexpr std::optional<std::array<char,
-                                   size(sendbidi) + size("s0000 "sv) +
-                                     size("00 00 00 00 00 00 00 00\r"sv)>>
+inline std::optional<std::array<char,
+                                size(sendbidi) + size("s0000 "sv) +
+                                  size("00 00 00 00 00 00 00 00\r"sv)>>
 datagram2sendbidi_str(dcc::Address addr, std::span<uint8_t const> datagram) {
   // Datagram can't be smaller than channel1 or bundled size
   if (size(datagram) < dcc::bidi::channel1_size ||

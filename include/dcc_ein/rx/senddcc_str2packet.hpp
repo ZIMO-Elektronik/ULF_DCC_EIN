@@ -26,7 +26,7 @@ namespace dcc_ein::rx {
 /// \param  str senddcc string
 /// \return dcc::Packet for valid strings
 /// \return std::nullopt for invalid strings
-constexpr std::optional<dcc::Packet> senddcc_str2packet(std::string_view str) {
+inline std::optional<dcc::Packet> senddcc_str2packet(std::string_view str) {
   // String must be of certain length and starting with "senddcc "
   if (size(str) < 17uz || !str.starts_with(senddcc)) return std::nullopt;
 

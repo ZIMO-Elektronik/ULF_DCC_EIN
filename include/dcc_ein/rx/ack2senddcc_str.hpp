@@ -27,8 +27,8 @@ namespace dcc_ein::rx {
 ///               'p' response byte indicates current buffer level in packets
 /// \param  byte  Response byte
 /// \return senddcc string for acknowledge
-constexpr std::array<char, size(senddcc) + 4uz> ack2senddcc_str(char id,
-                                                                uint8_t byte) {
+inline std::array<char, size(senddcc) + 4uz> ack2senddcc_str(char id,
+                                                             uint8_t byte) {
   // Copy prefix
   std::array<char, size(senddcc) + 4uz> str{};
   auto first{std::copy(cbegin(senddcc), cend(senddcc), data(str))};
