@@ -28,7 +28,7 @@ namespace dcc_ein::rx {
 /// \return std::nullopt for invalid strings
 inline std::optional<dcc::Packet> senddcc_str2packet(std::string_view str) {
   // String must be of certain length and starting with "senddcc "
-  if (size(str) < 17uz || !str.starts_with(senddcc)) return std::nullopt;
+  if (size(str) < 17uz || !str.starts_with(senddcc_prefix)) return std::nullopt;
 
   // Find \r
   auto const last{std::ranges::find(str, '\r')};
@@ -36,17 +36,16 @@ inline std::optional<dcc::Packet> senddcc_str2packet(std::string_view str) {
 
   // Data length must be multiple of 3
   auto const str_len{static_cast<size_t>(last - cbegin(str))};
-  auto const data_len{str_len + 1uz - size(senddcc)};
+  auto const data_len{str_len + 1uz - size(senddcc_prefix)};
   if (data_len % 3uz) return std::nullopt;
 
-  // Convert string to packet
+  // Hex string to binary
   dcc::Packet packet{
     .size = static_cast<decltype(dcc::Packet::size)>(data_len / 3uz)};
   for (auto i{0uz}; i < packet.size; ++i) {
-    auto const first{&str[8uz + 3uz * i]};
-    [[maybe_unused]] auto const [ptr, ec]{
-      std::from_chars(first, first + 2, packet.data[i], 16)};
-    if (ec != std::errc{}) return std::nullopt;
+    auto const first{&str[size(senddcc_prefix) + 3uz * i]};
+    if (std::from_chars(first, first + 2, packet.data[i], 16).ec != std::errc{})
+      return std::nullopt;
   }
   return packet;
 }

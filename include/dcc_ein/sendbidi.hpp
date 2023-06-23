@@ -2,7 +2,7 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-/// sendbidi prefix
+/// sendbidi prefix and size
 ///
 /// \file   dcc_ein/sendbidi.hpp
 /// \author Vincent Hamp
@@ -14,6 +14,11 @@
 
 namespace dcc_ein {
 
-inline constexpr std::string_view sendbidi{"sendbidi "};
+using namespace std::literals;
+
+inline constexpr std::string_view sendbidi_prefix{"sendbidi "};
+inline constexpr auto sendbidi_str_size{size(sendbidi_prefix) +
+                                        size("s0000 "sv) +
+                                        size("00 00 00 00 00 00 00 00\r"sv)};
 
 }  // namespace dcc_ein

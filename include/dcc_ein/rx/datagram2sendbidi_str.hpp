@@ -19,34 +19,29 @@
 
 namespace dcc_ein::rx {
 
-using namespace std::literals;
-
 /// Convert datagram to sendbidi string
 ///
 /// The returned string will have the pattern
-/// 'sendbidi [ubsalrtei][0-9a-f]{4}( [0-9a-f]{2}){8}\r'.
+/// 'sendbidi [ubsalrtei][0-9a-f]{4}( [0-9a-f]{2}){8}\r'. This string is sent
+/// when a BiDi datagram has been received.
 ///
 /// \param  addr      Address
 /// \param  datagram  Datagram
 /// \return sendbidi string for valid datagrams
 /// \return std::nullopt for invalid datagrams
-inline std::optional<std::array<char,
-                                size(sendbidi) + size("s0000 "sv) +
-                                  size("00 00 00 00 00 00 00 00\r"sv)>>
+inline std::optional<std::array<char, sendbidi_str_size>>
 datagram2sendbidi_str(dcc::Address addr, std::span<uint8_t const> datagram) {
   // Datagram can't be smaller than channel1 or bundled size
   if (size(datagram) < dcc::bidi::channel1_size ||
       size(datagram) > dcc::bidi::bundled_channels_size)
     return std::nullopt;
 
-  // Copy prefix
-  std::array<char,
-             size(sendbidi) + size("s0000 "sv) +
-               size("00 00 00 00 00 00 00 00\r"sv)>
-    str{};
-  auto first{std::copy(cbegin(sendbidi), cend(sendbidi), data(str))};
+  // Prefix
+  std::array<char, sendbidi_str_size> str{};
+  auto first{
+    std::copy(cbegin(sendbidi_prefix), cend(sendbidi_prefix), data(str))};
 
-  // Add address type identifier
+  // Address type identifier
   switch (addr.type) {
     case dcc::Address::UnknownService: *first++ = 'u'; break;
     case dcc::Address::Broadcast: *first++ = 'b'; break;
@@ -59,7 +54,7 @@ datagram2sendbidi_str(dcc::Address addr, std::span<uint8_t const> datagram) {
     case dcc::Address::IdleSystem: *first++ = 'i'; break;
   }
 
-  // Add address
+  // Address
   if (addr <= 0xFFFu) {
     *first++ = '0';
     if (addr <= 0xFFu) {
@@ -69,7 +64,7 @@ datagram2sendbidi_str(dcc::Address addr, std::span<uint8_t const> datagram) {
   }
   first = std::to_chars(first, end(str), addr, 16).ptr;
 
-  // Add datagram
+  // Datagram
   for (auto i{0uz}; i < dcc::bidi::bundled_channels_size; ++i) {
     *first++ = ' ';
     auto const byte{i < size(datagram) ? datagram[i] : 0u};

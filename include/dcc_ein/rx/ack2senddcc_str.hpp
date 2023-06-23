@@ -27,16 +27,17 @@ namespace dcc_ein::rx {
 ///               'p' response byte indicates current buffer level in packets
 /// \param  byte  Response byte
 /// \return senddcc string for acknowledge
-inline std::array<char, size(senddcc) + 4uz> ack2senddcc_str(char id,
-                                                             uint8_t byte) {
-  // Copy prefix
-  std::array<char, size(senddcc) + 4uz> str{};
-  auto first{std::copy(cbegin(senddcc), cend(senddcc), data(str))};
+inline std::array<char, size(senddcc_prefix) + 4uz>
+ack2senddcc_str(char id, uint8_t byte) {
+  // Prefix
+  std::array<char, size(senddcc_prefix) + 4uz> str{};
+  auto first{
+    std::copy(cbegin(senddcc_prefix), cend(senddcc_prefix), data(str))};
 
-  // Add ID
+  // ID
   *first++ = id;
 
-  // Add byte
+  // Byte
   if (byte <= 0xFu) *first++ = '0';
   first = std::to_chars(first, end(str), byte, 16).ptr;
 
