@@ -26,7 +26,7 @@ else()
 endif()
 
 if(NOT TARGET DCC::DCC)
-  cpmaddpackage("gh:ZIMO-Elektronik/DCC@0.27.0")
+  cpmaddpackage("gh:ZIMO-Elektronik/DCC@0.27.1")
 endif()
 
 target_link_libraries(DCC_EIN INTERFACE DCC::DCC)
