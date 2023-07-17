@@ -3,7 +3,7 @@
 #include <dcc_ein/dcc_ein.hpp>
 
 TEST(packet2senddcc_str, std_string_and_buffer_versions_are_equal) {
-  dcc::Packet packet{.data = {0x0Au, 0x12u, 0x49u, 0xFCu}, .size = 4u};
+  dcc::Packet packet{0x0Au, 0x12u, 0x49u, 0xFCu};
 
   // std::string version
   auto std_str{dcc_ein::tx::packet2senddcc_str(packet)};

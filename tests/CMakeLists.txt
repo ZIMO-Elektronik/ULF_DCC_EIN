@@ -5,7 +5,7 @@ add_executable(DCC_EINTests ${SRC})
 
 sanatize("address,undefined")
 
-target_common_warnings(DCC_EINTests)
+target_common_warnings(DCC_EINTests PRIVATE)
 
 cpmaddpackage("gh:google/googletest#main")
 

@@ -40,11 +40,11 @@ inline std::optional<dcc::Packet> senddcc_str2packet(std::string_view str) {
   if (data_len % 3uz) return std::nullopt;
 
   // Hex string to binary
-  dcc::Packet packet{
-    .size = static_cast<decltype(dcc::Packet::size)>(data_len / 3uz)};
-  for (auto i{0uz}; i < packet.size; ++i) {
+  dcc::Packet packet;
+  packet.resize(static_cast<dcc::Packet::size_type>(data_len / 3uz));
+  for (dcc::Packet::size_type i{}; i < size(packet); ++i) {
     auto const first{&str[size(senddcc_prefix) + 3uz * i]};
-    if (std::from_chars(first, first + 2, packet.data[i], 16).ec != std::errc{})
+    if (std::from_chars(first, first + 2, packet[i], 16).ec != std::errc{})
       return std::nullopt;
   }
   return packet;
