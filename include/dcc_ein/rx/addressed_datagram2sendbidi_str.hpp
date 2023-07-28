@@ -2,9 +2,9 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-/// Convert datagram to sendbidi string
+/// Convert addressed datagram to sendbidi string
 ///
-/// \file   dcc_ein/rx/datagram2sendbidi_str.hpp
+/// \file   dcc_ein/rx/addressed_datagram2sendbidi_str.hpp
 /// \author Vincent Hamp
 /// \date   22/06/2023
 
@@ -15,11 +15,12 @@
 #include <dcc/dcc.hpp>
 #include <optional>
 #include <string_view>
+#include "../addressed_datagram.hpp"
 #include "../sendbidi.hpp"
 
 namespace dcc_ein::rx {
 
-/// Convert datagram to sendbidi string
+/// Convert addressed datagram to sendbidi string
 ///
 /// The returned string will have the pattern
 /// 'sendbidi [ubsalrtei][0-9a-f]{4}( [0-9a-f]{2}){8}\r'. This string is sent
@@ -30,16 +31,13 @@ namespace dcc_ein::rx {
 /// \return sendbidi string for valid datagrams
 /// \return std::nullopt for invalid datagrams
 inline std::optional<std::array<char, sendbidi_str_size>>
-datagram2sendbidi_str(dcc::Address addr, std::span<uint8_t const> datagram) {
-  // Datagram can't be smaller than channel1 or bundled size
-  if (size(datagram) < dcc::bidi::channel1_size ||
-      size(datagram) > dcc::bidi::bundled_channels_size)
-    return std::nullopt;
-
+addressed_datagram2sendbidi_str(AddressedDatagram const& addressed_datagram) {
   // Prefix
   std::array<char, sendbidi_str_size> str{};
   auto first{
     std::copy(cbegin(sendbidi_prefix), cend(sendbidi_prefix), data(str))};
+
+  auto const& [addr, datagram]{addressed_datagram};
 
   // Address type identifier
   switch (addr.type) {

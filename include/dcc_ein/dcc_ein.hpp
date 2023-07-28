@@ -11,8 +11,8 @@
 #pragma once
 
 #include "rx/ack2senddcc_str.hpp"
-#include "rx/datagram2sendbidi_str.hpp"
+#include "rx/addressed_datagram2sendbidi_str.hpp"
 #include "rx/senddcc_str2packet.hpp"
 #include "tx/packet2senddcc_str.hpp"
 #include "tx/raw2senddcc_str.hpp"
-#include "tx/sendbidi_str2datagram.hpp"
+#include "tx/sendbidi_str2addressed_datagram.hpp"

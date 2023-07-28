@@ -20,7 +20,7 @@ namespace dcc_ein::tx {
 /// \param  out     Pointer to the destination buffer
 /// \return One-past-the-end pointer of the characters written
 inline char* packet2senddcc_str(dcc::Packet const& packet, char* out) {
-  return raw2senddcc_str({cbegin(packet.data), packet.size}, out);
+  return raw2senddcc_str({cbegin(packet), size(packet)}, out);
 }
 
 /// Convert packet to senddcc string
@@ -28,7 +28,7 @@ inline char* packet2senddcc_str(dcc::Packet const& packet, char* out) {
 /// \param  packet  DCC packet
 /// \return senddcc string
 inline auto packet2senddcc_str(dcc::Packet const& packet) {
-  return raw2senddcc_str({cbegin(packet.data), packet.size});
+  return raw2senddcc_str({cbegin(packet), size(packet)});
 }
 
 }  // namespace dcc_ein::tx

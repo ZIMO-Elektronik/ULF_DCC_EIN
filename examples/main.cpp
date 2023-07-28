@@ -16,13 +16,14 @@ int main() {
   auto packet_from_str{dcc_ein::rx::senddcc_str2packet(senddcc_str)};
 
   // Create sendbidi string from address and datagram
-  dcc::bidi::BundledChannels datagram{
-    0xA3u, 0xACu, 0x55u, 0xB1u, 0xD2u, 0x5Au, 0xACu, 0x9Au};
-  auto sendbidi_str{dcc_ein::rx::datagram2sendbidi_str(
-    {.value = 3u, .type = dcc::Address::Short}, datagram)};
+  dcc_ein::AddressedDatagram addressed_datagram{
+    .addr = {.value = 3u, .type = dcc::Address::Short},
+    .datagram = {0xA3u, 0xACu, 0x55u, 0xB1u, 0xD2u, 0x5Au, 0xACu, 0x9Au}};
+  auto sendbidi_str{
+    dcc_ein::rx::addressed_datagram2sendbidi_str(addressed_datagram)};
 
   // Create pair of address and datagram from sendbidi string
-  auto pair_addr_datagram{dcc_ein::tx::sendbidi_str2datagram(
+  auto addr_datagram{dcc_ein::tx::sendbidi_str2addressed_datagram(
     {cbegin(*sendbidi_str), cend(*sendbidi_str)})};
-  auto [addr_from_str, datagram_from_str]{*pair_addr_datagram};
+  auto [addr_from_str, datagram_from_str]{*addr_datagram};
 }
