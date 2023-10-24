@@ -47,8 +47,8 @@ addressed_datagram2sendbidi_str(AddressedDatagram const& addressed_datagram) {
     case dcc::Address::Accessory: *first++ = 'a'; break;
     case dcc::Address::Long: *first++ = 'l'; break;
     case dcc::Address::Reserved: *first++ = 'r'; break;
-    case dcc::Address::TipOffSearch: *first++ = 't'; break;  // May change
-    case dcc::Address::ExtendedPacket: *first++ = 'e'; break;
+    case dcc::Address::DataTransfer: *first++ = 't'; break;
+    case dcc::Address::AutomaticLogon: *first++ = 'e'; break;
     case dcc::Address::IdleSystem: *first++ = 'i'; break;
   }
 

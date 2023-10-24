@@ -38,8 +38,8 @@ sendbidi_str2addressed_datagram(std::string_view str) {
     case 'a': addr.type = dcc::Address::Accessory; break;
     case 'l': addr.type = dcc::Address::Long; break;
     case 'r': addr.type = dcc::Address::Reserved; break;
-    case 't': addr.type = dcc::Address::TipOffSearch; break;  // May change
-    case 'e': addr.type = dcc::Address::ExtendedPacket; break;
+    case 't': addr.type = dcc::Address::DataTransfer; break;
+    case 'e': addr.type = dcc::Address::AutomaticLogon; break;
     case 'i': addr.type = dcc::Address::IdleSystem; break;
     default: return std::nullopt;
   }

@@ -3,7 +3,7 @@ include(GoogleTest)
 file(GLOB_RECURSE SRC *.cpp)
 add_executable(DCC_EINTests ${SRC})
 
-sanatize("address,undefined")
+sanitize("address,undefined")
 
 target_common_warnings(DCC_EINTests PRIVATE)
 

@@ -51,8 +51,8 @@ The string of the `sendbidi` command follows the pattern `sendbidi [ubsalrtei][0
 | a                           | Accessory          |
 | l                           | Long               |
 | r                           | Reserved           |
-| t                           | Tip-off-search     |
-| e                           | Extended packet    |
+| t                           | Data transfer      |
+| e                           | Automatic logon    |
 | i                           | Idle or system     |
 
 ## Getting started
