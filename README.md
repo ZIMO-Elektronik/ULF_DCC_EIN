@@ -6,7 +6,7 @@
 
 DCC_EIN is a serial ASCII protocol used by the [ZIMO Sound Programmer](http://www.zimo.at/web2010/products/zsp_zimo-sound-programmer.htm). This C++ library of the same name contains code to either encode binary data into an ASCII string or vice versa to encode an ASCII string back into binary data. The protocol is currently supported by the following products:
 - Command stations
-  - [ZIMO MXULF](http://www.zimo.at/web2010/products/InfMXULF.htm)
+  - [ZIMO MXULF](http://www.zimo.at/web2010/products/InfMXULF_EN.htm)
 
 <details>
   <summary>Table of contents</summary>
