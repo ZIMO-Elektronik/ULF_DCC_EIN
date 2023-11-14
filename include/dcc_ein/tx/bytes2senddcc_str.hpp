@@ -4,9 +4,9 @@
 
 /// Convert raw data to senddcc string
 ///
-/// \file   dcc_ein/tx/raw2senddcc_str.hpp
+/// \file   dcc_ein/tx/bytes2senddcc_str.hpp
 /// \author Vincent Hamp
-/// \date   22/06/2023
+/// \date   14/11/2023
 
 #pragma once
 
@@ -18,12 +18,12 @@
 
 namespace dcc_ein::tx {
 
-/// Convert raw data to senddcc string into provided buffer
+/// Convert bytes to senddcc string into provided buffer
 ///
-/// \param  chunk Raw data
+/// \param  bytes Bytes
 /// \param  out   Pointer to the destination buffer
 /// \return One-past-the-end pointer of the characters written
-inline char* raw2senddcc_str(std::span<uint8_t const> chunk, char* out) {
+inline char* bytes2senddcc_str(std::span<uint8_t const> chunk, char* out) {
   // Prefix
   out = std::copy(cbegin(senddcc_prefix), cend(senddcc_prefix) - 1, out);
 
@@ -39,13 +39,13 @@ inline char* raw2senddcc_str(std::span<uint8_t const> chunk, char* out) {
   return out;
 }
 
-/// Convert raw data to senddcc string
+/// Convert bytes to senddcc string
 ///
-/// \param  chunk Raw data
+/// \param  bytes Bytes
 /// \return senddcc string
-inline std::string raw2senddcc_str(std::span<uint8_t const> chunk) {
+inline std::string bytes2senddcc_str(std::span<uint8_t const> chunk) {
   std::string str(size(senddcc_prefix) + 3uz * size(chunk), '\0');
-  raw2senddcc_str(chunk, data(str));
+  bytes2senddcc_str(chunk, data(str));
   return str;
 }
 

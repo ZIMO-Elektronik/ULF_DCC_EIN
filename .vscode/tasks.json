@@ -8,12 +8,6 @@
       "command": "cmake -Bbuild -GNinja -DCMAKE_TOOLCHAIN_FILE=CMakeModules/toolchains/clang.cmake -DCMAKE_BUILD_TYPE=Debug"
     },
     {
-      "label": "CMake DCC_EINTests GCC12",
-      "type": "shell",
-      "isBackground": true,
-      "command": "cmake -Bbuild -GNinja -DCMAKE_TOOLCHAIN_FILE=CMakeModules/toolchains/gcc-12.cmake -DCMAKE_BUILD_TYPE=Debug"
-    },
-    {
       "label": "CMake DCC_EINTests",
       "type": "shell",
       "isBackground": true,
