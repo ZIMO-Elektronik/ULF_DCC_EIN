@@ -1,10 +1,10 @@
-# DCC_EIN
+# ULF_DCC_EIN
 
-[![build](https://github.com/ZIMO-Elektronik/DCC_EIN/actions/workflows/build.yml/badge.svg)](https://github.com/ZIMO-Elektronik/DCC_EIN/actions/workflows/build.yml) [![tests](https://github.com/ZIMO-Elektronik/DCC_EIN/actions/workflows/tests.yml/badge.svg)](https://github.com/ZIMO-Elektronik/DCC_EIN/actions/workflows/tests.yml)
+[![build](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/build.yml/badge.svg)](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/build.yml) [![tests](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/tests.yml/badge.svg)](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/tests.yml)
 
-<img src="data/images/logo.gif" align="right"/>
+<img src="data/images/logo.svg" width="20%" align="right">
 
-DCC_EIN is a serial ASCII protocol used by the [ZIMO Sound Programmer](http://www.zimo.at/web2010/products/zsp_zimo-sound-programmer.htm). This C++ library of the same name contains code to either encode binary data into an ASCII string or vice versa to encode an ASCII string back into binary data. The protocol is currently supported by the following products:
+ULF_DCC_EIN is a ASCII protocol used by the [ZIMO Sound Programmer](http://www.zimo.at/web2010/products/zsp_zimo-sound-programmer.htm). This C++ library of the same name contains code to either encode binary data into an ASCII string or vice versa to encode an ASCII string back into binary data. The protocol is currently supported by the following products:
 - Command stations
   - [ZIMO MXULF](http://www.zimo.at/web2010/products/InfMXULF_EN.htm)
 
