@@ -2,11 +2,11 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-/// Convert raw data to senddcc string
+/// Convert bytes to senddcc string
 ///
-/// \file   dcc_ein/tx/bytes2senddcc_str.hpp
+/// \file   ulf/dcc_ein/bytes2senddcc_str.hpp
 /// \author Vincent Hamp
-/// \date   14/11/2023
+/// \date   17/11/2023
 
 #pragma once
 
@@ -14,9 +14,9 @@
 #include <optional>
 #include <span>
 #include <string>
-#include "../senddcc.hpp"
+#include "senddcc.hpp"
 
-namespace dcc_ein::tx {
+namespace ulf::dcc_ein {
 
 /// Convert bytes to senddcc string into provided buffer
 ///
@@ -49,4 +49,4 @@ inline std::string bytes2senddcc_str(std::span<uint8_t const> chunk) {
   return str;
 }
 
-}  // namespace dcc_ein::tx
+}  // namespace ulf::dcc_ein

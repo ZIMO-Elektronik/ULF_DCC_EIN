@@ -4,15 +4,15 @@
 
 /// sendbidi prefix and size
 ///
-/// \file   dcc_ein/sendbidi.hpp
+/// \file   ulf/dcc_ein/sendbidi.hpp
 /// \author Vincent Hamp
-/// \date   22/06/2023
+/// \date   17/11/2023
 
 #pragma once
 
 #include <string_view>
 
-namespace dcc_ein {
+namespace ulf::dcc_ein {
 
 using namespace std::literals;
 
@@ -21,4 +21,4 @@ inline constexpr auto sendbidi_str_size{size(sendbidi_prefix) +
                                         size("s0000 "sv) +
                                         size("00 00 00 00 00 00 00 00\r"sv)};
 
-}  // namespace dcc_ein
+}  // namespace ulf::dcc_ein

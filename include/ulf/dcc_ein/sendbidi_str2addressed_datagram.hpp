@@ -4,19 +4,19 @@
 
 /// Convert sendbidi string to addressed datagram
 ///
-/// \file   dcc_ein/tx/sendbidi_str2addressed_datagram.hpp
+/// \file   ulf/dcc_ein/sendbidi_str2addressed_datagram.hpp
 /// \author Vincent Hamp
-/// \date   22/06/2023
+/// \date   17/11/2023
 
 #pragma once
 
 #include <charconv>
 #include <optional>
 #include <string_view>
-#include "../addressed_datagram.hpp"
-#include "../senddcc.hpp"
+#include "addressed_datagram.hpp"
+#include "senddcc.hpp"
 
-namespace dcc_ein::tx {
+namespace ulf::dcc_ein {
 
 /// Convert sendbidi string to addressed datagram
 ///
@@ -63,4 +63,4 @@ sendbidi_str2addressed_datagram(std::string_view str) {
   return {{.addr = addr, .datagram = datagram}};
 }
 
-}  // namespace dcc_ein::tx
+}  // namespace ulf::dcc_ein

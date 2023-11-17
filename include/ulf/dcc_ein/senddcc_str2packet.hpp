@@ -4,9 +4,9 @@
 
 /// Convert senddcc string to packet
 ///
-/// \file   dcc_ein/rx/senddcc_str2packet.hpp
+/// \file   ulf/dcc_ein/senddcc_str2packet.hpp
 /// \author Vincent Hamp
-/// \date   22/06/2023
+/// \date   17/11/2023
 
 #pragma once
 
@@ -14,9 +14,9 @@
 #include <dcc/dcc.hpp>
 #include <optional>
 #include <string_view>
-#include "../senddcc.hpp"
+#include "senddcc.hpp"
 
-namespace dcc_ein::rx {
+namespace ulf::dcc_ein {
 
 /// Convert senddcc string to packet
 ///
@@ -50,4 +50,4 @@ inline std::optional<dcc::Packet> senddcc_str2packet(std::string_view str) {
   return packet;
 }
 
-}  // namespace dcc_ein::rx
+}  // namespace ulf::dcc_ein

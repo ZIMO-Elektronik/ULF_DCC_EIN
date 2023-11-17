@@ -4,16 +4,16 @@
 
 /// senddcc prefix
 ///
-/// \file   dcc_ein/senddcc.hpp
+/// \file   ulf/dcc_ein/senddcc.hpp
 /// \author Vincent Hamp
-/// \date   22/06/2023
+/// \date   17/11/2023
 
 #pragma once
 
 #include <string_view>
 
-namespace dcc_ein {
+namespace ulf::dcc_ein {
 
 inline constexpr std::string_view senddcc_prefix{"senddcc "};
 
-}  // namespace dcc_ein
+}  // namespace ulf::dcc_ein

@@ -4,9 +4,7 @@
 
 <img src="data/images/logo.svg" width="20%" align="right">
 
-ULF_DCC_EIN is a ASCII protocol used by the [ZIMO Sound Programmer](http://www.zimo.at/web2010/products/zsp_zimo-sound-programmer.htm). This C++ library of the same name contains code to either encode binary data into an ASCII string or vice versa to encode an ASCII string back into binary data. The protocol is currently supported by the following products:
-- Command stations
-  - [ZIMO MXULF](http://www.zimo.at/web2010/products/InfMXULF_EN.htm)
+ULF_DCC_EIN is one of several [ULF_COM](https://github.com/ZIMO-Elektronik/ULF_COM) protocols. It is used to transmit [DCC](https://github.com/ZIMO-Elektronik/DCC) commands as human-readable ASCII strings. This C++ library of the same name contains code to either encode binary data into an ASCII string or vice versa to encode an ASCII string back into binary data.
 
 <details>
   <summary>Table of contents</summary>
@@ -27,7 +25,7 @@ ULF_DCC_EIN is a ASCII protocol used by the [ZIMO Sound Programmer](http://www.z
 </details>
 
 ## Protocol
-The protocol consists of only two commands, both of which send raw data encoded as hex ASCII. A `senddcc` command to send DCC and a `sendbidi` command to receive BiDi feedback. Both command strings are terminated with a carriage return.
+The protocol consists of only two commands, both of which send bytes encoded as hex ASCII. A `senddcc` command to send DCC and a `sendbidi` command to receive BiDi feedback. Both command strings are terminated with a carriage return.
 
 ![](data/images/protocol.png)
 
@@ -65,15 +63,15 @@ This library is meant to be consumed with CMake.
 
 ```cmake
 # Either by including it with CPM
-cpmaddpackage("gh:ZIMO-Elektronik/DCC_EIN@0.0.1")
+cpmaddpackage("gh:ZIMO-Elektronik/ULF_DCC_EIN@0.3.0")
 
 # or the FetchContent module
 FetchContent_Declare(
   DCC
-  GIT_REPOSITORY https://github.com/ZIMO-Elektronik/DCC_EIN
-  GIT_TAG v0.0.1)
+  GIT_REPOSITORY https://github.com/ZIMO-Elektronik/ULF_DCC_EIN
+  GIT_TAG v0.3.0)
 
-target_link_libraries(YourTarget INTERFACE DCC_EIN::DCC_EIN)
+target_link_libraries(YourTarget INTERFACE ULF::DCC_EIN)
 ```
 
 ### Build

@@ -4,18 +4,18 @@
 
 /// Convert acknowledge to senddcc string
 ///
-/// \file   dcc_ein/rx/ack2senddcc_str.hpp
+/// \file   ulf/dcc_ein/ack2senddcc_str.hpp
 /// \author Vincent Hamp
-/// \date   22/06/2023
+/// \date   17/11/2023
 
 #pragma once
 
 #include <charconv>
 #include <dcc/dcc.hpp>
 #include <string_view>
-#include "../senddcc.hpp"
+#include "senddcc.hpp"
 
-namespace dcc_ein::rx {
+namespace ulf::dcc_ein {
 
 /// Convert acknowledge to senddcc string
 ///
@@ -46,4 +46,4 @@ ack2senddcc_str(char id, uint8_t byte) {
   return str;
 }
 
-}  // namespace dcc_ein::rx
+}  // namespace ulf::dcc_ein
