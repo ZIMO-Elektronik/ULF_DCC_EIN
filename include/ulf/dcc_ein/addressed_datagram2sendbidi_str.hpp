@@ -28,9 +28,8 @@ namespace ulf::dcc_ein {
 ///
 /// \param  addr      Address
 /// \param  datagram  Datagram
-/// \return sendbidi string for valid datagrams
-/// \return std::nullopt for invalid datagrams
-inline std::optional<std::array<char, sendbidi_str_size>>
+/// \return sendbidi string
+inline std::array<char, sendbidi_str_size>
 addressed_datagram2sendbidi_str(AddressedDatagram const& addressed_datagram) {
   // Prefix
   std::array<char, sendbidi_str_size> str{};
