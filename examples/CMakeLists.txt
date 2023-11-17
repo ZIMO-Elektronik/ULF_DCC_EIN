@@ -1,6 +1,8 @@
 file(GLOB_RECURSE SRC *.cpp)
-add_executable(DCC_EINExamples ${SRC})
+add_executable(ULF_DCC_EINExamples ${SRC})
 
-target_common_warnings(DCC_EINExamples PRIVATE)
+sanitize("address,undefined")
 
-target_link_libraries(DCC_EINExamples PRIVATE DCC_EIN::DCC_EIN)
+target_common_warnings(ULF_DCC_EINExamples PRIVATE)
+
+target_link_libraries(ULF_DCC_EINExamples PRIVATE ULF::DCC_EIN)

@@ -2,10 +2,10 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug DCC_EINExamples",
+      "name": "Debug ULF_DCC_EINExamples",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/examples/DCC_EINExamples",
+      "program": "${workspaceFolder}/build/examples/ULF_DCC_EINExamples",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",
@@ -21,10 +21,10 @@
       ]
     },
     {
-      "name": "Debug DCC_EINTests",
+      "name": "Debug ULF_DCC_EINTests",
       "type": "cppdbg",
       "request": "launch",
-      "program": "${workspaceFolder}/build/tests/DCC_EINTests",
+      "program": "${workspaceFolder}/build/tests/ULF_DCC_EINTests",
       "args": [],
       "stopAtEntry": false,
       "cwd": "${workspaceFolder}",

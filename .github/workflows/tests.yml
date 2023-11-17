@@ -16,5 +16,5 @@ jobs:
         env:
           CC:   gcc-13
           CXX:  g++-13
-      - run: cmake --build build --target DCC_EINTests
+      - run: cmake --build build --target ULF_DCC_EINTests
       - run: ctest --test-dir build --schedule-random

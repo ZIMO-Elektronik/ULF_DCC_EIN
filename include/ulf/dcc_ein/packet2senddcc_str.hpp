@@ -4,15 +4,15 @@
 
 /// Convert packet to senddcc string
 ///
-/// \file   dcc_ein/tx/packet2senddcc_str.hpp
+/// \file   ulf/dcc_ein/packet2senddcc_str.hpp
 /// \author Vincent Hamp
-/// \date   22/06/2023
+/// \date   17/11/2023
 
 #pragma once
 
 #include "bytes2senddcc_str.hpp"
 
-namespace dcc_ein::tx {
+namespace ulf::dcc_ein {
 
 /// Convert packet to senddcc string into provided buffer
 ///
@@ -31,4 +31,4 @@ inline auto packet2senddcc_str(dcc::Packet const& packet) {
   return bytes2senddcc_str({cbegin(packet), size(packet)});
 }
 
-}  // namespace dcc_ein::tx
+}  // namespace ulf::dcc_ein

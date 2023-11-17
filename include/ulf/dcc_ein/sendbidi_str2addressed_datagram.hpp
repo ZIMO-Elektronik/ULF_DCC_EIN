@@ -4,29 +4,37 @@
 
 /// Convert sendbidi string to addressed datagram
 ///
-/// \file   dcc_ein/tx/sendbidi_str2addressed_datagram.hpp
+/// \file   ulf/dcc_ein/sendbidi_str2addressed_datagram.hpp
 /// \author Vincent Hamp
-/// \date   22/06/2023
+/// \date   17/11/2023
 
 #pragma once
 
 #include <charconv>
+#include <expected>
 #include <optional>
 #include <string_view>
-#include "../addressed_datagram.hpp"
-#include "../senddcc.hpp"
+#include <system_error>
+#include "addressed_datagram.hpp"
+#include "senddcc.hpp"
 
-namespace dcc_ein::tx {
+namespace ulf::dcc_ein {
 
 /// Convert sendbidi string to addressed datagram
 ///
 /// \param  str sendbidi string
 /// \return Addressed datagram
 /// \return std::nullopt for invalid strings
-inline std::optional<AddressedDatagram>
+inline std::expected<std::optional<AddressedDatagram>, std::errc>
 sendbidi_str2addressed_datagram(std::string_view str) {
-  if (size(str) < sendbidi_str_size || !str.starts_with(sendbidi_prefix))
-    return std::nullopt;
+  auto const count{size(str)};
+
+  // String must start width "sendbidi "
+  if (!str.starts_with(sendbidi_prefix.substr(0uz, count)))
+    return std::unexpected(std::errc::invalid_argument);
+
+  // String must be of certain length
+  if (size(str) < sendbidi_str_size) return std::nullopt;
 
   dcc::Address addr;
 
@@ -41,26 +49,29 @@ sendbidi_str2addressed_datagram(std::string_view str) {
     case 't': addr.type = dcc::Address::DataTransfer; break;
     case 'e': addr.type = dcc::Address::AutomaticLogon; break;
     case 'i': addr.type = dcc::Address::IdleSystem; break;
-    default: return std::nullopt;
+    default: return std::unexpected(std::errc::invalid_argument);
   }
 
   // Address
-  if (std::from_chars(&str[size(sendbidi_prefix) + 1uz],
-                      &str[size(sendbidi_prefix) + 1uz + 4uz],
-                      addr.value,
-                      16)
-        .ec != std::errc{})
-    return std::nullopt;
+  if (auto const [ptr,
+                  ec]{std::from_chars(&str[size(sendbidi_prefix) + 1uz],
+                                      &str[size(sendbidi_prefix) + 1uz + 4uz],
+                                      addr.value,
+                                      16)};
+      ec != std::errc{})
+    return std::unexpected(ec);
 
   // Datagram
   dcc::bidi::Datagram datagram;
   for (auto i{0uz}; i < size(datagram); ++i) {
     auto const first{&str[size(sendbidi_prefix) + 1uz + 4uz + 1uz + 3uz * i]};
-    if (std::from_chars(first, first + 2, datagram[i], 16).ec != std::errc{})
-      return std::nullopt;
+    if (auto const [ptr,
+                    ec]{std::from_chars(first, first + 2, datagram[i], 16)};
+        ec != std::errc{})
+      return std::unexpected(ec);
   }
 
-  return {{.addr = addr, .datagram = datagram}};
+  return AddressedDatagram{.addr = addr, .datagram = datagram};
 }
 
-}  // namespace dcc_ein::tx
+}  // namespace ulf::dcc_ein

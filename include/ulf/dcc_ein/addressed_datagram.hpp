@@ -4,19 +4,19 @@
 
 /// Addressed datagram
 ///
-/// \file   dcc_ein/addressed_datagram.hpp
+/// \file   ulf/dcc_ein/addressed_datagram.hpp
 /// \author Vincent Hamp
-/// \date   27/07/2023
+/// \date   17/11/2023
 
 #pragma once
 
 #include <dcc/dcc.hpp>
 
-namespace dcc_ein {
+namespace ulf::dcc_ein {
 
 struct AddressedDatagram {
   dcc::Address addr{};
   dcc::bidi::Datagram<> datagram{};
 };
 
-}  // namespace dcc_ein
+}  // namespace ulf::dcc_ein

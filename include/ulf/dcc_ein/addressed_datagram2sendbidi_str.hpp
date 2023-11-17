@@ -4,9 +4,9 @@
 
 /// Convert addressed datagram to sendbidi string
 ///
-/// \file   dcc_ein/rx/addressed_datagram2sendbidi_str.hpp
+/// \file   ulf/dcc_ein/addressed_datagram2sendbidi_str.hpp
 /// \author Vincent Hamp
-/// \date   22/06/2023
+/// \date   17/11/2023
 
 #pragma once
 
@@ -15,10 +15,10 @@
 #include <dcc/dcc.hpp>
 #include <optional>
 #include <string_view>
-#include "../addressed_datagram.hpp"
-#include "../sendbidi.hpp"
+#include "addressed_datagram.hpp"
+#include "sendbidi.hpp"
 
-namespace dcc_ein::rx {
+namespace ulf::dcc_ein {
 
 /// Convert addressed datagram to sendbidi string
 ///
@@ -28,9 +28,8 @@ namespace dcc_ein::rx {
 ///
 /// \param  addr      Address
 /// \param  datagram  Datagram
-/// \return sendbidi string for valid datagrams
-/// \return std::nullopt for invalid datagrams
-inline std::optional<std::array<char, sendbidi_str_size>>
+/// \return sendbidi string
+inline std::array<char, sendbidi_str_size>
 addressed_datagram2sendbidi_str(AddressedDatagram const& addressed_datagram) {
   // Prefix
   std::array<char, sendbidi_str_size> str{};
@@ -75,4 +74,4 @@ addressed_datagram2sendbidi_str(AddressedDatagram const& addressed_datagram) {
   return str;
 }
 
-}  // namespace dcc_ein::rx
+}  // namespace ulf::dcc_ein
