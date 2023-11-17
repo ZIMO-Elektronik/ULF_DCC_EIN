@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0
+- Use nested namespace
+- Adpot API to [ULF_COM](https://github.com/ZIMO-Elektronik/ULF_COM)
+
 ## 0.2.0
 - Changes to namespace dcc::tx 
   - Rename raws2senddcc_str to bytes2senddcc_str
