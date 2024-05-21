@@ -68,7 +68,7 @@ cpmaddpackage("gh:ZIMO-Elektronik/ULF_DCC_EIN@0.3.0")
 # or the FetchContent module
 FetchContent_Declare(
   DCC
-  GIT_REPOSITORY https://github.com/ZIMO-Elektronik/ULF_DCC_EIN
+  GIT_REPOSITORY "https://github.com/ZIMO-Elektronik/ULF_DCC_EIN"
   GIT_TAG v0.3.0)
 
 target_link_libraries(YourTarget INTERFACE ULF::DCC_EIN)
