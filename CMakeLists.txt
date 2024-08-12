@@ -4,7 +4,7 @@ include(FetchContent)
 FetchContent_Declare(
   CMakeModules
   GIT_REPOSITORY "https://github.com/ZIMO-Elektronik/CMakeModules"
-  GIT_TAG v0.9.1
+  GIT_TAG v0.9.2
   SOURCE_DIR ${CMAKE_BINARY_DIR}/CMakeModules)
 FetchContent_MakeAvailable(CMakeModules)
 
@@ -28,7 +28,7 @@ endif()
 target_common_warnings(ULF_DCC_EIN INTERFACE)
 
 if(NOT TARGET DCC::DCC)
-  cpmaddpackage("gh:ZIMO-Elektronik/DCC@0.30.0")
+  cpmaddpackage("gh:ZIMO-Elektronik/DCC@0.35.2")
 endif()
 
 target_link_libraries(ULF_DCC_EIN INTERFACE DCC::DCC)
@@ -38,7 +38,7 @@ if(PROJECT_IS_TOP_LEVEL)
   add_subdirectory(examples)
   file(
     DOWNLOAD
-    "https://github.com/ZIMO-Elektronik/.clang-format/raw/master/.clang-format"
+    "https://github.com/ZIMO-Elektronik/.github/raw/master/data/.clang-format"
     ${CMAKE_CURRENT_LIST_DIR}/.clang-format)
   file(GLOB_RECURSE SRC include/*.*pp tests/*.*pp)
   add_clang_format_target(ULF_DCC_EINFormat OPTIONS -i FILES ${SRC})

@@ -2,7 +2,7 @@
 
 [![build](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/build.yml/badge.svg)](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/build.yml) [![tests](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/tests.yml/badge.svg)](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/tests.yml)
 
-<img src="data/images/logo.svg" width="20%" align="right">
+<a href="https://github.com/ZIMO-Elektronik/ULF_COM"><img src="data/images/logo.svg" width="20%" align="right"></a>
 
 ULF_DCC_EIN is one of several [ULF_COM](https://github.com/ZIMO-Elektronik/ULF_COM) protocols. It is used to transmit [DCC](https://github.com/ZIMO-Elektronik/DCC) commands as human-readable ASCII strings. This C++ library of the same name contains code to either encode binary data into an ASCII string or vice versa to encode an ASCII string back into binary data.
 
