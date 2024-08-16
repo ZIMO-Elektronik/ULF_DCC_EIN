@@ -25,10 +25,11 @@ namespace ulf::dcc_ein {
 /// String should have the pattern 'senddcc( [0-9a-fA-F]{2}){3,}\r'. If the
 /// string contains multiple packets only the first one is returned.
 ///
-/// \param  str                         senddcc string
-/// \return dcc::Packet                 dcc::Packet created from senddcc string
-/// \return std::nullopt                Not enough characters
-/// \return std::errc::invalid_argument Invalid senddcc string
+/// \param  str                             senddcc string
+/// \return dcc::Packet                     dcc::Packet created from string
+/// \retval std::nullopt                    Not enough characters
+/// \retval std::errc::invalid_argument     Invalid senddcc string
+/// \retval std::errc::result_out_of_range  Datagram out of range
 constexpr std::expected<std::optional<dcc::Packet>, std::errc>
 senddcc_str2packet(std::string_view str) {
   auto const count{size(str)};

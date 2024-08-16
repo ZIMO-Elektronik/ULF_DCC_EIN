@@ -22,9 +22,11 @@ namespace ulf::dcc_ein {
 
 /// Convert sendbidi string to addressed datagram
 ///
-/// \param  str sendbidi string
-/// \return Addressed datagram
-/// \return std::nullopt for invalid strings
+/// \param  str                             sendbidi string
+/// \return AddressedDatagram               Addressed datagram
+/// \retval std::nullopt                    Not enough characters
+/// \retval std::errc::invalid_argument     Invalid sendbidi string
+/// \retval std::errc::result_out_of_range  Datagram out of range
 constexpr std::expected<std::optional<AddressedDatagram>, std::errc>
 sendbidi_str2addressed_datagram(std::string_view str) {
   auto const count{size(str)};
