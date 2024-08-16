@@ -28,7 +28,7 @@ endif()
 target_common_warnings(ULF_DCC_EIN INTERFACE)
 
 if(NOT TARGET DCC::DCC)
-  cpmaddpackage("gh:ZIMO-Elektronik/DCC@0.35.2")
+  cpmaddpackage("gh:ZIMO-Elektronik/DCC@0.35.3")
 endif()
 
 target_link_libraries(ULF_DCC_EIN INTERFACE DCC::DCC)
