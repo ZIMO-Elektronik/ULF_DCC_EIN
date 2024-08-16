@@ -27,7 +27,7 @@ namespace ulf::dcc_ein {
 ///               'p' response byte indicates current buffer level in packets
 /// \param  byte  Response byte
 /// \return senddcc string for acknowledge
-inline std::array<char, size(senddcc_prefix) + 4uz>
+constexpr std::array<char, size(senddcc_prefix) + 4uz>
 ack2senddcc_str(char id, uint8_t byte) {
   // Prefix
   std::array<char, size(senddcc_prefix) + 4uz> str{};

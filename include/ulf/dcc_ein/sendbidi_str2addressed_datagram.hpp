@@ -25,7 +25,7 @@ namespace ulf::dcc_ein {
 /// \param  str sendbidi string
 /// \return Addressed datagram
 /// \return std::nullopt for invalid strings
-inline std::expected<std::optional<AddressedDatagram>, std::errc>
+constexpr std::expected<std::optional<AddressedDatagram>, std::errc>
 sendbidi_str2addressed_datagram(std::string_view str) {
   auto const count{size(str)};
 

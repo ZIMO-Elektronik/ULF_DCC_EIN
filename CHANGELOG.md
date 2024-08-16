@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.1
+- `constexpr` all the things
+
 ## 0.3.0
 - Use nested namespace
 - Adpot API to [ULF_COM](https://github.com/ZIMO-Elektronik/ULF_COM)

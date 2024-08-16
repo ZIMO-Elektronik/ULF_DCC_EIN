@@ -29,7 +29,7 @@ namespace ulf::dcc_ein {
 /// \return dcc::Packet                 dcc::Packet created from senddcc string
 /// \return std::nullopt                Not enough characters
 /// \return std::errc::invalid_argument Invalid senddcc string
-inline std::expected<std::optional<dcc::Packet>, std::errc>
+constexpr std::expected<std::optional<dcc::Packet>, std::errc>
 senddcc_str2packet(std::string_view str) {
   auto const count{size(str)};
 

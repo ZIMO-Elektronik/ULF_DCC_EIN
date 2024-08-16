@@ -29,7 +29,7 @@ namespace ulf::dcc_ein {
 /// \param  addr      Address
 /// \param  datagram  Datagram
 /// \return sendbidi string
-inline std::array<char, sendbidi_str_size>
+constexpr std::array<char, sendbidi_str_size>
 addressed_datagram2sendbidi_str(AddressedDatagram const& addressed_datagram) {
   // Prefix
   std::array<char, sendbidi_str_size> str{};

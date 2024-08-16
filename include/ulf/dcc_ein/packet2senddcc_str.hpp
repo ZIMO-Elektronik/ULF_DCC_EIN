@@ -19,7 +19,7 @@ namespace ulf::dcc_ein {
 /// \param  packet  DCC packet
 /// \param  out     Pointer to the destination buffer
 /// \return One-past-the-end pointer of the characters written
-inline char* packet2senddcc_str(dcc::Packet const& packet, char* out) {
+constexpr char* packet2senddcc_str(dcc::Packet const& packet, char* out) {
   return bytes2senddcc_str({cbegin(packet), size(packet)}, out);
 }
 
@@ -27,7 +27,7 @@ inline char* packet2senddcc_str(dcc::Packet const& packet, char* out) {
 ///
 /// \param  packet  DCC packet
 /// \return senddcc string
-inline auto packet2senddcc_str(dcc::Packet const& packet) {
+constexpr auto packet2senddcc_str(dcc::Packet const& packet) {
   return bytes2senddcc_str({cbegin(packet), size(packet)});
 }
 
