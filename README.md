@@ -7,14 +7,14 @@
 ULF_DCC_EIN is one of several [ULF_COM](https://github.com/ZIMO-Elektronik/ULF_COM) protocols. It is used to transmit [DCC](https://github.com/ZIMO-Elektronik/DCC) commands as human-readable ASCII strings. This C++ library of the same name contains code to either encode binary data into an ASCII string or vice versa to encode an ASCII string back into binary data.
 
 <details>
-  <summary>Table of contents</summary>
+  <summary>Table of Contents</summary>
   <ol>
     <li><a href="#protocol">Protocol</a></li>
       <ul>
         <li><a href="#senddcc">senddcc</a></li>
         <li><a href="#sendbidi">sendbidi</a></li>
       </ul>
-    <li><a href="#getting-started">Getting started</a></li>
+    <li><a href="#getting-started">Getting Started</a></li>
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
@@ -33,7 +33,7 @@ The protocol consists of only two commands, both of which send bytes encoded as 
 The string of the `senddcc` command follows the pattern `senddcc( [0-9a-fA-F]{2}){3,}\r`. The hex ASCII coded bytes contained in the string correspond to the data bytes of the DCC command including the checksum.
 
 The command can optionally be answered with a string of the pattern `senddcc [a-fA-F]([0-9a-fA-F]{2})\r`. The response contains an identifier and a hex ASCII encoded data byte whose meaning depends on the identifier.
-| Response byte preceding character | Response byte type                                      |
+| Response Byte Preceding Character | Response Byte Type                                      |
 | --------------------------------- | ------------------------------------------------------- |
 | b                                 | Response byte indicates current buffer level in bytes   |
 | p                                 | response byte indicates current buffer level in packets |
@@ -41,7 +41,7 @@ The command can optionally be answered with a string of the pattern `senddcc [a-
 ### sendbidi
 The string of the `sendbidi` command follows the pattern `sendbidi [ubsalrtei][0-9a-fA-F]{4}( [0-9a-fA-F]{2}){8}\r`. In addition to the hex ASCII coded datagram, the command also contains the address belonging to the datagram. Since [DCC](https://github.com/ZIMO-Elektronik/DCC) addresses are not unique, an associated identifier that determines the address type must also be included.
 
-| Address preceding character | [DCC](https://github.com/ZIMO-Elektronik/DCC) address type   |
+| Address Preceding Character | [DCC](https://github.com/ZIMO-Elektronik/DCC) Address Type   |
 | --------------------------- | ------------------------------------------------------------ |
 | u                           | Unknown or service                                           |
 | b                           | Broadcast                                                    |
@@ -53,7 +53,7 @@ The string of the `sendbidi` command follows the pattern `sendbidi [ubsalrtei][0
 | e                           | Automatic logon                                              |
 | i                           | Idle or system                                               |
 
-## Getting started
+## Getting Started
 ### Prerequisites
 - C++23 compatible compiler
 - [CMake](https://cmake.org/) ( >= 3.25 )
