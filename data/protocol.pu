@@ -1,0 +1,20 @@
+@startuml
+
+participant Transmitter as T
+participant Receiver as R
+
+T -> R : senddcc 03 3f aa 96\\r
+T <- R : senddcc b06\\r
+note over T, R
+  Transmitter sends command
+  Receiver acknowledges with number of bytes in it's FIFO
+end note
+
+...
+
+T <- R : sendbidi s0003 a3 ac 55 b1 d2 5a ac 9a\\r
+note over T, R
+  Receiver sends BiDi datagram
+end note
+
+@enduml

@@ -63,13 +63,13 @@ This library is meant to be consumed with CMake.
 
 ```cmake
 # Either by including it with CPM
-cpmaddpackage("gh:ZIMO-Elektronik/ULF_DCC_EIN@0.3.0")
+cpmaddpackage("gh:ZIMO-Elektronik/ULF_DCC_EIN@0.3.1")
 
 # or the FetchContent module
 FetchContent_Declare(
   DCC
   GIT_REPOSITORY "https://github.com/ZIMO-Elektronik/ULF_DCC_EIN"
-  GIT_TAG v0.3.0)
+  GIT_TAG v0.3.1)
 
 target_link_libraries(YourTarget INTERFACE ULF::DCC_EIN)
 ```
