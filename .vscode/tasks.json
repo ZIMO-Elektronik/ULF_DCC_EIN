@@ -26,10 +26,10 @@
       "command": "./build/tests/ULF_DCC_EINTests"
     },
     {
-      "label": "Run mscgen",
+      "label": "Run PlantUML",
       "type": "shell",
       "isBackground": true,
-      "command": "mscgen -Tpng -i ./data/protocol.msc -o ./data/images/protocol.png"
+      "command": "plantuml -o ./images ./data/protocol.pu"
     }
   ]
 }

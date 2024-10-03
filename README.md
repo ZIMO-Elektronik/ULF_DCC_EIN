@@ -1,6 +1,6 @@
 # ULF_DCC_EIN
 
-[![build](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/build.yml/badge.svg)](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/build.yml) [![tests](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/tests.yml/badge.svg)](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/tests.yml)
+[![build](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/build.yml/badge.svg)](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/build.yml) [![tests](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/tests.yml/badge.svg)](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/actions/workflows/tests.yml) [![license](https://img.shields.io/github/license/ZIMO-Elektronik/ULF_DCC_EIN)](https://github.com/ZIMO-Elektronik/ULF_DCC_EIN/raw/master/LICENSE)
 
 <a href="https://github.com/ZIMO-Elektronik/ULF_COM"><img src="data/images/logo.svg" width="20%" align="right"></a>
 
@@ -63,13 +63,13 @@ This library is meant to be consumed with CMake.
 
 ```cmake
 # Either by including it with CPM
-cpmaddpackage("gh:ZIMO-Elektronik/ULF_DCC_EIN@0.3.0")
+cpmaddpackage("gh:ZIMO-Elektronik/ULF_DCC_EIN@0.3.1")
 
 # or the FetchContent module
 FetchContent_Declare(
   DCC
   GIT_REPOSITORY "https://github.com/ZIMO-Elektronik/ULF_DCC_EIN"
-  GIT_TAG v0.3.0)
+  GIT_TAG v0.3.1)
 
 target_link_libraries(YourTarget INTERFACE ULF::DCC_EIN)
 ```
