@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.1
+- Bugfix minimum CMake version set in `static_math` no longer supported by CMake 4.0.0
+
 ## 0.4.0
 - Add new address type identifiers
   - `dcc::Address::BasicLoco`
