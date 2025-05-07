@@ -4,7 +4,7 @@ include(FetchContent)
 FetchContent_Declare(
   CMakeModules
   GIT_REPOSITORY "https://github.com/ZIMO-Elektronik/CMakeModules"
-  GIT_TAG v0.9.3
+  GIT_TAG v0.9.5
   SOURCE_DIR ${CMAKE_BINARY_DIR}/CMakeModules)
 FetchContent_MakeAvailable(CMakeModules)
 
@@ -28,7 +28,7 @@ endif()
 target_common_warnings(ULF_DCC_EIN INTERFACE)
 
 if(NOT TARGET DCC::DCC)
-  cpmaddpackage("gh:ZIMO-Elektronik/DCC@0.40.3")
+  cpmaddpackage("gh:ZIMO-Elektronik/DCC@0.40.4")
 endif()
 
 target_link_libraries(ULF_DCC_EIN INTERFACE DCC::DCC)
