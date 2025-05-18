@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.5.0
+- Rename `IdleSystem` to `Idle` address (255 no longer used for anything but idle)
+
 ## 0.4.1
 - Bugfix minimum CMake version set in `static_math` no longer supported by CMake 4.0.0
 
@@ -18,7 +21,7 @@
 
 ## 0.3.0
 - Use nested namespace
-- Adpot API to [ULF_COM](https://github.com/ZIMO-Elektronik/ULF_COM)
+- Adopt API to [ULF_COM](https://github.com/ZIMO-Elektronik/ULF_COM)
 
 ## 0.2.0
 - Changes to namespace dcc::tx 

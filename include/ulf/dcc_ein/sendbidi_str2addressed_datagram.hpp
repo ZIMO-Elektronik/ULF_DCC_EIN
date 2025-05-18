@@ -51,7 +51,7 @@ sendbidi_str2addressed_datagram(std::string_view str) {
     case 'r': addr.type = dcc::Address::Reserved; break;
     case 't': addr.type = dcc::Address::DataTransfer; break;
     case 'e': addr.type = dcc::Address::AutomaticLogon; break;
-    case 'i': addr.type = dcc::Address::IdleSystem; break;
+    case 'i': addr.type = dcc::Address::Idle; break;
     default: return std::unexpected(std::errc::invalid_argument);
   }
 
