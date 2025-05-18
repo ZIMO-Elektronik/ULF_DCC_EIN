@@ -41,18 +41,18 @@ The command can optionally be answered with a string of the pattern `senddcc [a-
 ### sendbidi
 The string of the `sendbidi` command follows the pattern `sendbidi [ubsaxlrtei][0-9a-fA-F]{4}( [0-9a-fA-F]{2}){8}\r`. In addition to the hex ASCII coded datagram, the command also contains the address belonging to the datagram. Since [DCC](https://github.com/ZIMO-Elektronik/DCC) addresses are not unique, an associated identifier that determines the address type must also be included.
 
-| Address Preceding Character | [DCC](https://github.com/ZIMO-Elektronik/DCC) Address Type   |
-| --------------------------- | ------------------------------------------------------------ |
-| u                           | Unknown or service                                           |
-| b                           | Broadcast                                                    |
-| s                           | Basic loco (short)                                           |
-| a                           | Basic accessory                                              |
-| x                           | Extended accessory                                           |
-| l                           | Extended loco (long)                                         |
-| r                           | Reserved                                                     |
-| t                           | Data transfer                                                |
-| e                           | Automatic logon                                              |
-| i                           | Idle or system                                               |
+| Address Preceding Character | [DCC](https://github.com/ZIMO-Elektronik/DCC) Address Type |
+| --------------------------- | ---------------------------------------------------------- |
+| u                           | Unknown or service                                         |
+| b                           | Broadcast                                                  |
+| s                           | Basic loco (short)                                         |
+| a                           | Basic accessory                                            |
+| x                           | Extended accessory                                         |
+| l                           | Extended loco (long)                                       |
+| r                           | Reserved                                                   |
+| t                           | Data transfer                                              |
+| e                           | Automatic logon                                            |
+| i                           | Idle                                                       |
 
 > [!IMPORTANT]  
 > Bytes inside a `sendbidi` string where no data was received must be filled with zeros. For example, an answer that does not include channel 1 might look like this.
