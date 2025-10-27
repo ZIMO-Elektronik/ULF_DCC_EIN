@@ -4,7 +4,7 @@ include(FetchContent)
 FetchContent_Declare(
   CMakeModules
   GIT_REPOSITORY "https://github.com/ZIMO-Elektronik/CMakeModules"
-  GIT_TAG v0.9.5
+  GIT_TAG v0.10.0
   SOURCE_DIR ${CMAKE_BINARY_DIR}/CMakeModules)
 FetchContent_MakeAvailable(CMakeModules)
 
@@ -19,16 +19,17 @@ add_library(ULF::DCC_EIN ALIAS ULF_DCC_EIN)
 
 target_compile_features(ULF_DCC_EIN INTERFACE cxx_std_23)
 
-if(PROJECT_IS_TOP_LEVEL)
+# https://github.com/espressif/esp-idf/issues/17773
+if(PROJECT_IS_TOP_LEVEL AND NOT ESP_PLATFORM)
   target_include_directories(ULF_DCC_EIN INTERFACE include)
+  target_common_warnings(ULF_DCC_EIN INTERFACE)
+  target_common_errors(ULF_DCC_EIN INTERFACE)
 else()
   target_include_directories(ULF_DCC_EIN SYSTEM INTERFACE include)
 endif()
 
-target_common_warnings(ULF_DCC_EIN INTERFACE)
-
 if(NOT TARGET DCC::DCC)
-  cpmaddpackage("gh:ZIMO-Elektronik/DCC@0.41.0")
+  cpmaddpackage("gh:ZIMO-Elektronik/DCC@0.44.5")
 endif()
 
 target_link_libraries(ULF_DCC_EIN INTERFACE DCC::DCC)
