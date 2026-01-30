@@ -11,6 +11,7 @@
 #pragma once
 
 #include <charconv>
+#include <cstdint>
 #include <optional>
 #include <span>
 #include <string>

@@ -10,6 +10,7 @@
 
 #pragma once
 
+#include <dcc/dcc.hpp>
 #include "bytes2senddcc_str.hpp"
 
 namespace ulf::dcc_ein {

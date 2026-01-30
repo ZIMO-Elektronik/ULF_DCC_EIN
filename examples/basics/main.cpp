@@ -2,8 +2,7 @@
 
 auto packet2senddcc_str() {
   // Create a DCC advanced operations speed packet
-  dcc::Packet packet{
-    dcc::make_advanced_operations_speed_packet(3u, 0b1011'0000u)};
+  dcc::Packet packet{dcc::make_128_speed_step_control_packet(3u, 0b1011'0000u)};
 
   // Create senddcc string from packet
   auto senddcc_str{ulf::dcc_ein::packet2senddcc_str(packet)};

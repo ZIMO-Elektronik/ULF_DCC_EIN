@@ -16,6 +16,7 @@
 #include <string_view>
 #include <system_error>
 #include "addressed_datagram.hpp"
+#include "sendbidi.hpp"
 #include "senddcc.hpp"
 
 namespace ulf::dcc_ein {
