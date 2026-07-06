@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.5.1
+- Add workaround for Espressif's misuse of CMake
+
 ## 0.5.0
 - Rename `IdleSystem` to `Idle` address (255 no longer used for anything but idle)
 
